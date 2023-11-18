@@ -53,6 +53,5 @@ missing module named git.index.IndexFile - imported by git.index (conditional), 
 missing module named vms_lib - imported by platform (delayed, optional)
 missing module named java - imported by platform (delayed)
 missing module named _winreg - imported by platform (delayed, optional)
-missing module named typing_extensions - imported by git.types (conditional)
 missing module named git.GitCmdObjectDB - imported by git (conditional), git.objects.fun (conditional)
 missing module named git.Remote - imported by git (conditional), git.refs.remote (conditional), git.objects.submodule.util (conditional)

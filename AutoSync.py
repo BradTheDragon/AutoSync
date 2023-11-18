@@ -9,6 +9,7 @@ def sync_to_github():
     github_repo_owner = repo_owner_entry.get()
     github_repo_name = repo_name_entry.get()
     github_name = github_repo_name
+    repo_public_state = public_state.get()
     repo_pull_state = pull_state.get()
     repo_push_state = push_state.get()
     repo_checkout_state = checkout_state.get()
@@ -21,9 +22,9 @@ def sync_to_github():
     
     os.chdir(local_folder)
 
-    if github_repo_owner == "":
-        github_repo_name = f"https://BradTheDragon:{github_authorization}@github.com/BradTheDragon/{github_repo_name}.git"
-    elif not github_repo_owner == "":
+    if not repo_public_state:
+        github_repo_name = f"https://{github_repo_owner}:{github_authorization}@github.com/{github_repo_owner}/{github_repo_name}.git"
+    else:
         github_repo_name = f"https://github.com/{github_repo_owner}/{github_repo_name}.git"
     
     try:
@@ -112,6 +113,10 @@ tk.Label(app, text="New Branch Commit ID:").pack()
 commit_id = tk.Entry(app)
 commit_id.insert(0, id_memory)
 commit_id.pack()
+
+public_state = tk.IntVar()
+publicCheckbox = tk.Checkbutton(app, text="Public Repo", variable=public_state)
+publicCheckbox.pack()
 
 pull_state = tk.IntVar()
 pullCheckbox = tk.Checkbutton(app, text="Pull Repo", variable=pull_state)
